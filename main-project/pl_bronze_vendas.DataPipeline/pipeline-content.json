@@ -1,0 +1,251 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings"
+            },
+            "additionalColumns": [
+              {
+                "name": "FileName",
+                "value": "$$FILENAME"
+              }
+            ],
+            "storeSettings": {
+              "type": "LakehouseReadSettings",
+              "recursive": true,
+              "wildcardFolderPath": "bronze/vendas",
+              "wildcardFileName": "*.csv",
+              "enablePartitionDiscovery": false
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation"
+                },
+                "columnDelimiter": ",",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "lh_retail",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "1fa402d6-6f35-b2e4-4afb-8a2c03167705",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Append",
+            "applyVOrder": false,
+            "enableTimestampNtz": false,
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "dbo",
+                "table": "bronze_vendas"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "lh_retail",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "1fa402d6-6f35-b2e4-4afb-8a2c03167705",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "pedido_id",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "pedido_id",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "item_pedido_id",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "item_pedido_id",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "data_pedido",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "data_pedido",
+                  "physicalType": "date"
+                }
+              },
+              {
+                "source": {
+                  "name": "cliente_id",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "cliente_id",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "produto_id",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "produto_id",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "loja_id",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "loja_id",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "quantidade",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "quantidade",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "desconto_pct",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "desconto_pct",
+                  "physicalType": "double"
+                }
+              },
+              {
+                "source": {
+                  "name": "canal",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "canal",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "preco_unitario",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "preco_unitario",
+                  "physicalType": "double"
+                }
+              },
+              {
+                "source": {
+                  "name": "valor_bruto",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "valor_bruto",
+                  "physicalType": "double"
+                }
+              },
+              {
+                "source": {
+                  "name": "valor_liquido",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "valor_liquido",
+                  "physicalType": "double"
+                }
+              },
+              {
+                "source": {
+                  "name": "FileName",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "FileName",
+                  "physicalType": "string"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "ReadFiles Sales",
+        "dependsOn": []
+      }
+    ],
+    "variables": {
+      "listFiles": {
+        "type": "Array"
+      }
+    }
+  }
+}

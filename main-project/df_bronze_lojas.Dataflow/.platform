@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "df_bronze_lojas",
+    "description": "ingestão de dados do arquivo para camada bronze"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2a20acb0-3821-bdce-4b07-2eb169b7586d"
+  }
+}

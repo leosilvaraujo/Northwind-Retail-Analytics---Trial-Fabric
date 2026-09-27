@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "es_cliques_ecommerce"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c8673a36-79b0-8c3f-494c-99b1af7e06d8"
+  }
+}
