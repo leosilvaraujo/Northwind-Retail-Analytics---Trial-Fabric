@@ -1,0 +1,29 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "df_lojas",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "lojas": {
+      "queryId": "5bfc01eb-78b6-4200-8315-7f4b1ea4fc5e",
+      "queryName": "lojas",
+      "loadEnabled": false
+    },
+    "lojas_DataDestination": {
+      "queryId": "e836dc09-156f-44a7-a86d-8ba58778fd84",
+      "queryName": "lojas_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"d8c36706-4f79-4e84-903f-b8066ef331ed\",\"DatasourceId\":\"0f60c0a8-aae4-4d40-a016-4436f035a02a\"}"
+    }
+  ]
+}
